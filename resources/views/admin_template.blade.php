@@ -385,7 +385,7 @@ desired effect
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 2.2.0 -->
-<script src="{{asset('bower_components/admin-lte/plugins/jQuery/jQuery-2.1.4.min.js')}}"></script>
+<script src="{{asset('bower_components/admin-lte/plugins/jQuery/jQuery-2.2.0.min.js')}}"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="{{asset('bower_components/admin-lte/bootstrap/js/bootstrap.min.js')}}"></script>
 <!-- AdminLTE App -->
