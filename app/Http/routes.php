@@ -19,3 +19,8 @@ Route::get('/', function () {
 Route::get('admin', function() {
     return view('admin_template');
 });
+
+// call Admin_template
+Route::get('test', function() {
+    return view('test');
+});
