@@ -1,0 +1,6 @@
+{
+  "name": "Pia",
+  "dependencies": {
+    "admin-lte": "*"
+  }
+}
