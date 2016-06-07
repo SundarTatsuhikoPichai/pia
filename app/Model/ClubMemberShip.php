@@ -10,9 +10,9 @@ class ClubMemberShip extends Model
 
     public function vald($input){
         $rules = [
-            'club_id' => 'required',
-            'membership_name' => 'required|max:50',
-            'membership_grade'=> 'required|max:10'
+            'club_id'          => 'required',
+            'membership_name'  => 'required|max:50',
+            'membership_grade' => 'required|max:10'
         ];
 
         return Validator::make[$input,$rules];
