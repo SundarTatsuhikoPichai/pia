@@ -18,6 +18,11 @@ class ClubMemberWatchingTest extends TestCase
         $this->assertTrue(true);
     }
 
+    /**
+     * Model validation
+     *
+     * @return void
+     */
     public function testValidation() {
 
         $clubMemberWatching = new ClubMemberWatching;
