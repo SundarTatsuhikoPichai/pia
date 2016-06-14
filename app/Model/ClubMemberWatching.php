@@ -17,7 +17,7 @@ class ClubMemberWatching extends Model
 
     public function valid($input) {
         $rules = [
-            'club_member_id'        => 'required',
+            'club_member_id'        => 'required|integer',
             'watched_at'            => 'required|date',
             'opponent_of_club_code' => 'required|max:10',
             'home_away'             => 'required|max:10'
