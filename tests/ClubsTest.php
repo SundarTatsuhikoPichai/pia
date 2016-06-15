@@ -27,7 +27,7 @@ class ClubsTest extends TestCase
             'club_code'     => '0001',
             'club_name'     => 'クラブ',
             'stadium_name'  => str_random(100),
-            'postal_code'   => mt_rand(10000000, 99999999)
+            'postal_code'   => '000-0000'
         ];
         $validation = $clubs->valid($successInput);
         // var_dump($validation->errors()->all());
@@ -39,7 +39,7 @@ class ClubsTest extends TestCase
             'club_name'     => 'クラブ',
             'stadium_name'  => str_random(100),
             /* Over digits */
-            'postal_code'   => mt_rand(100000000, 999999999)
+            'postal_code'   => '000-00000'
         ];
         $validation = $clubs->valid($failureInput);
         $this->assertFalse($validation->passes());
