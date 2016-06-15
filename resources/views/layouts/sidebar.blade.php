@@ -31,15 +31,11 @@
     <ul class="sidebar-menu">
       <li class="header">HEADER</li>
       <!-- Optionally, you can add icons to the links -->
-      <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
-      <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
-      <li class="treeview">
-        <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>
-        <ul class="treeview-menu">
-          <li><a href="#">Link in level 2</a></li>
-          <li><a href="#">Link in level 2</a></li>
-        </ul>
-      </li>
+      <li><a href="{{ URL::asset('/') }}"><i class="fa fa-link"></i>ダッシュボード</a></li>
+      <li><a href="{{ URL::asset('/populationpyramid') }}"><i class="fa fa-link"></i>人口ピラミッド分析</a></li>
+      <li><a href="{{ URL::asset('/heatmap') }}"><i class="fa fa-link"></i>地域別属性分析</a></li>
+      <li><a href="{{ URL::asset('/inputclubdata') }}"><i class="fa fa-link"></i>クラブデータ入力</a></li>
+      <li><a href="{{ URL::asset('/importcsv') }}"><i class="fa fa-link"></i>CSVインポート</a></li>
     </ul>
     <!-- /.sidebar-menu -->
   </section>
