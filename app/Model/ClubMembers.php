@@ -24,9 +24,9 @@ class ClubMembers extends Model
             'birth_day'          => 'required|date',
             'postal_code'        => 'required|min:8|max:8',
             'address1'           => 'required|max:50',
-            'address2'           => 'required|max:50',
-            'address3'           => 'required|max:50',
-            'address4'           => 'required|max:50',
+            'address2'           => 'max:50',
+            'address3'           => 'max:50',
+            'address4'           => 'max:50',
             'first_name_kana'    => 'required|max:50',
             'last_name_kana'     => 'required|max:50',
             'club_membership_id' => 'required'
