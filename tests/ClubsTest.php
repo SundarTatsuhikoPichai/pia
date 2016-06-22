@@ -44,4 +44,18 @@ class ClubsTest extends TestCase
         $validation = $clubs->valid($failureInput);
         $this->assertFalse($validation->passes());
     }
+
+    /**
+     * Insert test
+     * @return [type] [description]
+     */
+    // public function testRegisterDB() {
+    //     $club = [
+    //         'club_code'     => str_random(10),
+    //         'club_name'     => str_random(10),
+    //         'stadium_name'  => str_random(100),
+    //         'postal_code'   => mt_rand(10000000, 99999999)
+    //     ];
+    //     $this->assertTrue(Clubs::registerClubInfo($club));
+    // }
 }
