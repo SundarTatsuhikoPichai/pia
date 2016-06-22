@@ -10,10 +10,16 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::get('/',                  ['as' => 'dashboard',         'uses' => 'MainController@index']);
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/populationpyramid', ['as' => 'populationpyramid', 'uses' => 'MainController@populationPyramid']);
+
+Route::get('/heatmap',           ['as' => 'heatmap',           'uses' => 'MainController@heatMap']);
+
+Route::get('/inputclubdata',     ['as' => 'inputclubdata',     'uses' => 'MainController@inputClubData']);
+
+Route::get('/importcsv',         ['as' => 'importcsv',         'uses' => 'MainController@importCsv']);
+
 
 // call Admin_template
 Route::get('admin', function() {

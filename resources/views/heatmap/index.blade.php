@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('page-title')
-タイトル
+ヒートマップ
 @stop
 
 @section('content')
