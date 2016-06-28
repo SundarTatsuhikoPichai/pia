@@ -34,7 +34,7 @@ class ClubMembers extends Model
             'address4'           => 'max:50',
             'first_name_kana'    => 'max:50',
             'last_name_kana'     => 'max:50',
-            'club_membership_id' => 'required'
+            'membership_grade'   => 'required'
         ];
 
         return Validator::make($input, $rules);
@@ -76,7 +76,7 @@ class ClubMembers extends Model
                 'address4'           => $rows[8],
                 'first_name_kana'    => $rows[16],
                 'last_name_kana'     => $rows[15],
-                'club_membership_id' => implode(DB::table('club_membership')
+                'membership_grade' => implode(DB::table('club_membership')
                     ->where('club_id', '=', $clubId)
                     ->where('membership_name', '=', $rows[13])
                     ->pluck('membership_grade'))
@@ -92,8 +92,8 @@ class ClubMembers extends Model
 
     public static function saveClubMembers(array $clubMembers) {
         // DB::table('club_members')->insert($clubMembers);
-        // foreach($clubMembers as $clubMember) {
-        //     DB::table('club_members')->insert($clubMember);
-        // }
+        foreach($clubMembers as $clubMember) {
+            DB::table('club_members')->insert($clubMember);
+        }
     }
 }
