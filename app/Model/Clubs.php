@@ -7,10 +7,10 @@ use Validator;
 
 class Clubs extends Model
 {
-    //
     protected $table = 'clubs';
-
     protected $guarded = ['id'];
+
+    public $timestamps = false;
 
     public function valid($input) {
         $rules = [
@@ -20,5 +20,21 @@ class Clubs extends Model
             'postal_code'   => 'required|min:8|max:8'
         ];
         return Validator::make($input, $rules);
+    }
+
+    /**
+     * [registerClubInfo description]
+     * @param  [Clubs] $club
+     * @return void
+     */
+    public static function registerClubInfo($club) {
+
+        $clubs = new Clubs;
+        $clubs->club_code    = $club['club_code'];
+        $clubs->club_name    = $club['club_name'];
+        $clubs->stadium_name = $club['stadium_name'];
+        $clubs->postal_code  = $club['postal_code'];
+
+        return $clubs->save();
     }
 }

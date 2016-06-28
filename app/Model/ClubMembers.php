@@ -3,7 +3,12 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
+use Goodby\CSV\Import\Standard\Lexer;
+use Goodby\CSV\Import\Standard\Interpreter;
+use Goodby\CSV\Import\Standard\LexerConfig;
+
 use Validator;
+use DB;
 
 class ClubMembers extends Model
 {
@@ -33,5 +38,56 @@ class ClubMembers extends Model
         ];
 
         return Validator::make($input, $rules);
+    }
+
+    /**
+     * [readFromCSV description]
+     * @param  [type] $clubId   [description]
+     * @param  [type] $year     [description]
+     * @param  [type] $fileName [description]
+     * @return [array]           [description]
+     */
+    public static function readFromCSV($clubId, $year, $fileName) {
+
+        $config = new LexerConfig();
+        $config
+            ->setDelimiter(',')
+            ->setToCharset('UTF-8')
+            ->setFromCharset('SJIS-win');
+
+        $interpreter = new Interpreter();
+        $interpreter->unstrict();
+        $interpreter->addObserver(function(array $rows)
+            use($clubId, $year, &$clubMembers, &$lineNumber) {
+
+            $lineNumber += 1;
+            if ($lineNumber === 1) { return; }
+
+            $clubMembers[] = array(
+                'member_id'          => $rows[1],
+                'club_id'            => $clubId,
+                'year'               => $year,
+                'sex'                => $rows[2],
+                'birth_day'          => $rows[3],
+                'postal_code'        => $rows[4],
+                'address1'           => $rows[5],
+                'address2'           => $rows[6],
+                'address3'           => $rows[7],
+                'address4'           => $rows[8],
+                'first_name_kana'    => $rows[16],
+                'last_name_kana'     => $rows[15],
+                'club_membership_id' => DB::table('club_membership')
+                    ->select('membership_grade')
+                    ->where('club_id', '=', $clubId)
+                    ->where('membership_name', '=', $rows[13])
+                    ->get()
+            );
+        });
+
+        $lexer = new Lexer($config);
+        $lexer->parse(storage_path(). '/csv/'. $fileName, $interpreter);
+        var_dump($clubMembers);
+
+        return $clubMembers;
     }
 }
