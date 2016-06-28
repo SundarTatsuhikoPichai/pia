@@ -3,7 +3,6 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
-
 use Goodby\CSV\Import\Standard\Lexer;
 use Goodby\CSV\Import\Standard\Interpreter;
 use Goodby\CSV\Import\Standard\LexerConfig;
@@ -43,8 +42,10 @@ class ClubMembers extends Model
 
     /**
      * [readFromCSV description]
-     * @param  array  $cols [description]
-     * @return [type]       [description]
+     * @param  [type] $clubId   [description]
+     * @param  [type] $year     [description]
+     * @param  [type] $fileName [description]
+     * @return [array]           [description]
      */
     public static function readFromCSV($clubId, $year, $fileName) {
 
@@ -54,35 +55,38 @@ class ClubMembers extends Model
             ->setToCharset('UTF-8')
             ->setFromCharset('SJIS-win');
 
-        // convert encoding to SJIS-win
-        // $clubId           = mb_convert_encoding($clubId, 'SJIS-win');
-        // $year             = mb_convert_encoding($year, 'SJIS-win', 'auto');
-        // $clubMembershipId = mb_convert_encoding('A', 'SJIS-win', 'auto');
-
         $interpreter = new Interpreter();
         $interpreter->unstrict();
-        $interpreter->addObserver(function(array $cols) use($clubId, $year, $clubMembershipId, &$clubMembers) {
+        $interpreter->addObserver(function(array $rows)
+            use($clubId, $year, &$clubMembers, &$lineNumber) {
+
+            $lineNumber += 1;
+            if ($lineNumber === 1) { return; }
 
             $clubMembers[] = array(
-                'member_id'          => $cols[1],
+                'member_id'          => $rows[1],
                 'club_id'            => $clubId,
                 'year'               => $year,
-                'sex'                => $cols[2],
-                'birth_day'          => $cols[3],
-                'postal_code'        => $cols[4],
-                'address1'           => $cols[5],
-                'address2'           => $cols[6],
-                'address3'           => $cols[7],
-                'address4'           => $cols[8],
-                'first_name_kana'    => $cols[16],
-                'last_name_kana'     => $cols[15],
-                'club_membership_id' => $clubMembershipId
+                'sex'                => $rows[2],
+                'birth_day'          => $rows[3],
+                'postal_code'        => $rows[4],
+                'address1'           => $rows[5],
+                'address2'           => $rows[6],
+                'address3'           => $rows[7],
+                'address4'           => $rows[8],
+                'first_name_kana'    => $rows[16],
+                'last_name_kana'     => $rows[15],
+                'club_membership_id' => DB::table('club_membership')
+                    ->select('membership_grade')
+                    ->where('club_id', '=', $clubId)
+                    ->where('membership_name', '=', $rows[13])
+                    ->get()
             );
         });
 
         $lexer = new Lexer($config);
         $lexer->parse(storage_path(). '/csv/'. $fileName, $interpreter);
-        // var_dump($clubMembers);
+        var_dump($clubMembers);
 
         return $clubMembers;
     }
