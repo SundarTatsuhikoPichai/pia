@@ -69,7 +69,8 @@ class ClubMembersTest extends TestCase
         $this->assertFalse($validation->passes());
     }
 
-    // public function testReadFromCSV() {
-    //     ClubMembers::readFromCSV('JU', 2016, 'JU_2016_member_20160516090134.csv');
-    // }
+    public function testReadFromCSV() {
+        $clubMembers =  ClubMembers::readFromCSV(9, 2016, 'AN_2016_member_20160516090134.csv');
+        ClubMembers::saveClubMembers($clubMembers);
+    }
 }
