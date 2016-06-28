@@ -51,11 +51,11 @@ class ClubMembersTest extends TestCase
             // Error expected
             'year'               => 20000,
             // Error expected
-            'sex'                => 'mm',
+            'sex'                => '',
             // Error expected
-            'birth_day'          => '2000-01-010',
+            'birth_day'          => '',
             // Error expected
-            'postal_code'        => '000-000000',
+            'postal_code'        => '',
             // Error expected
             'address1'           => str_random(100),
             'address2'           => str_random(50),
