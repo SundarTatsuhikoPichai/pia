@@ -36,4 +36,20 @@ class ClubMemberShipTest extends TestCase
         $validation = $clubMemberShip->valid($failureInput);
         $this->assertFalse($validation->passes());
     }
+
+    public function testRegisterClubMembership() {
+        // $clubMemberShips = array(
+        //     array(
+        //         'club_id'          => '0001',
+        //         'membership_name'  => 'サンダーピチャイ',
+        //         'membership_grade' => 'クラブ会員サンダーピチャイ'
+        //     ),
+        //     array(
+        //         'club_id'          => '0001',
+        //         'membership_name'  => 'サンダーピチャイ',
+        //         'membership_grade' => 'クラブ会員サンダーピチャイ'
+        //     )
+        // );
+        // ClubMemberShip::registerClubMemberShip($clubMemberShips);
+    }
 }

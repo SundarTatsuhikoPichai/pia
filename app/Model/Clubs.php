@@ -4,6 +4,7 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 use Validator;
+use DB;
 
 class Clubs extends Model
 {
@@ -25,16 +26,10 @@ class Clubs extends Model
     /**
      * [registerClubInfo description]
      * @param  [Clubs] $club
-     * @return void
+     * @return [int] clubId
      */
     public static function registerClubInfo($club) {
 
-        $clubs = new Clubs;
-        $clubs->club_code    = $club['club_code'];
-        $clubs->club_name    = $club['club_name'];
-        $clubs->stadium_name = $club['stadium_name'];
-        $clubs->postal_code  = $club['postal_code'];
-
-        return $clubs->save();
+        return DB::table('clubs')->insertGetId($club);
     }
 }

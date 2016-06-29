@@ -90,7 +90,7 @@ class ClubMembers extends Model
         return $clubMembers;
     }
 
-    public static function saveClubMembers(array $clubMembers) {
+    public static function registerClubMembers(array $clubMembers) {
         // DB::table('club_members')->insert($clubMembers);
         foreach($clubMembers as $clubMember) {
             DB::table('club_members')->insert($clubMember);
