@@ -31,11 +31,11 @@
     <ul class="sidebar-menu">
       <li class="header">HEADER</li>
       <!-- Optionally, you can add icons to the links -->
-      <li><a href="{{ URL::asset('/') }}"><i class="fa fa-link"></i>ダッシュボード</a></li>
-      <li><a href="{{ URL::asset('/populationpyramid') }}"><i class="fa fa-link"></i>人口ピラミッド分析</a></li>
-      <li><a href="{{ URL::asset('/heatmap') }}"><i class="fa fa-link"></i>地域別属性分析</a></li>
-      <li><a href="{{ URL::asset('/inputclubdata') }}"><i class="fa fa-link"></i>クラブデータ入力</a></li>
-      <li><a href="{{ URL::asset('/importcsv') }}"><i class="fa fa-link"></i>CSVインポート</a></li>
+      <li><a href="{{ URL::asset('/') }}"><i class="fa fa-dashboard"></i><span>ダッシュボード</span></a></li>
+      <li><a href="{{ URL::asset('/populationpyramid') }}"><i class="fa fa-align-left"></i><span>人口ピラミッド分析</span></a></li>
+      <li><a href="{{ URL::asset('/heatmap') }}"><i class="fa fa-map-o"></i><span>地域別属性分析</span></a></li>
+      <li><a href="{{ URL::asset('/inputclubdata') }}"><i class="fa fa-pencil-square-o"></i><span>クラブデータ入力</span></a></li>
+      <li><a href="{{ URL::asset('/importcsv') }}"><i class="fa fa-cloud-upload"></i><span>CSVインポート</span></a></li>
     </ul>
     <!-- /.sidebar-menu -->
   </section>
