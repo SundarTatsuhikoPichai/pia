@@ -21,8 +21,9 @@ Route::get('/inputclubdata',     ['as' => 'inputclubdata',     'uses' => 'InputC
 
 Route::post('/inputclubdata/create',     ['as' => 'inputclubdata',     'uses' => 'InputClubDataController@create']);
 
-
-Route::get('/importcsv',         ['as' => 'importcsv',         'uses' => 'MainController@importCsv']);
+// importcsv
+Route::get('/importcsv',         ['as' => 'importcsvIndex',         'uses' => 'ImportCsvController@index']);
+Route::post('/importcsv/create',         ['as' => 'importcsvCreate',         'uses' => 'ImportCsvController@create']);
 
 
 // call Admin_template

@@ -20,11 +20,4 @@ class MainController extends Controller
         return view('heatmap/index');
     }
 
-    public function inputClubData() {
-        return view('inputclubdata/index');
-    }
-
-    public function importCsv() {
-        return view('importcsv/index');
-    }
 }

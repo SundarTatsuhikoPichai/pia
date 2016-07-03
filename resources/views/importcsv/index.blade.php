@@ -11,29 +11,25 @@ CSVインポート
 @section('content')
 <div class="row">
     <div class="col-md-10 col-md-offset-1">
-        <form role="form">
+        {!! Form::open(['url' => 'importcsv/create', 'enctype' => 'multipart/form-data']) !!}
             <div class="box">
                 <div class="form-group">
-                    <label>Jリーグクラブ名</label>
-                    <select class="form-control">
-                        <option>option 1</option>
-                        <option>option 2</option>
-                        <option>option 3</option>
-                        <option>option 4</option>
-                        <option>option 5</option>
+                    {!! Form::label('Jリーグクラブ名') !!}
+                    <select class="form-control" name="clubId">
+                        @foreach($clubs as $club)
+                        <option value="{{ $club['id'] }}">{{ $club['club_name'] }}</option>
+                        @endforeach
                     </select>
-
-                    <label>年度</label>
-                    <select class="form-control">
-                        <option>aaaaa</option>
-                    </select>
-
-                    <input type="file" id="inputFile">
+                </div>
+                <div class="form-group">
+                    <input type="file" id="importcsv" name="importCsv">
                     <p class="help-block">追加したいCSVファイルを選択して下さい</p>
-                    <button type="submit" class="btn btn-primary">追加</button>
+                </div>
+                <div class="form-group">
+                    {!! Form::submit('追加', ['class' => 'btn btn-primary']) !!}
                 </div>
             </div>
-        </form>
+        {!! Form::close() !!}
     </div>
 
 </div>
