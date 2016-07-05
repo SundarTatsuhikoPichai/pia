@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Model\Clubs;
 use App\Model\ClubMembers;
+use App\Model\NameAggregation;
 
 class ImportCsvController extends Controller
 {
@@ -34,11 +35,13 @@ class ImportCsvController extends Controller
             $csvFile->move(storage_path(). '/csv', $csvFileName);
             // Read member data from csv
             $clubMembers = ClubMembers::readFromCSV($request->input('clubId'), $year, $csvFileName);
+            // Aggregation by Name
+            $uniqueMembers = NameAggregation::execute($clubMembers);
             // Insert clubmembers
-            ClubMembers::registerClubMembers($clubMembers);
+            ClubMembers::registerClubMembers($uniqueMembers);
             // Create message
-            $msg = '正常に保存されました。 サマリ：' . count($clubMembers) . '件';
-            
+            $msg = '正常に保存されました。データ件数：' . count($clubMembers) . '件 / サマリ件数：' . count($uniqueMembers) . '件';
+
         } else {
             // Create message
             $msg = 'ファイルが見つかりませんでした。';

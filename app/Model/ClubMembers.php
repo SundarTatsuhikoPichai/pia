@@ -85,13 +85,11 @@ class ClubMembers extends Model
 
         $lexer = new Lexer($config);
         $lexer->parse(storage_path(). '/csv/'. $fileName, $interpreter);
-        var_dump($clubMembers);
 
         return $clubMembers;
     }
 
     public static function registerClubMembers(array $clubMembers) {
-        // DB::table('club_members')->insert($clubMembers);
         foreach($clubMembers as $clubMember) {
             DB::table('club_members')->insert($clubMember);
         }
