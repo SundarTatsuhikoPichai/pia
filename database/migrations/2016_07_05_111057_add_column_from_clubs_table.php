@@ -12,7 +12,7 @@ class AddColumnFromClubsTable extends Migration
      */
     public function up()
     {
-        Schema::create('clubs', function (Blueprint $table) {
+        Schema::table('clubs', function (Blueprint $table) {
             $table->string('image_name', 100);
         });
     }
