@@ -24,12 +24,22 @@ class Clubs extends Model
     }
 
     /**
-     * [registerClubInfo description]
-     * @param  [Clubs] $club
+     * register club info and return the id
+     *
      * @return [int] clubId
      */
     public static function registerClubInfo($club) {
 
         return DB::table('clubs')->insertGetId($club);
+    }
+
+    /**
+     * update club information
+     *
+     * @return [bool]
+     */
+    public static function updateClubInfo($club) {
+
+        return $club->save();
     }
 }

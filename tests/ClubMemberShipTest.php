@@ -52,4 +52,20 @@ class ClubMemberShipTest extends TestCase
         // );
         // ClubMemberShip::registerClubMemberShip($clubMemberShips);
     }
+
+    public function testUpdateClubMembership() {
+        // $clubMemberShips = array(
+        //     array(
+        //         'club_id'          => '0001',
+        //         'membership_name'  => 'サンダーピチャイ',
+        //         'membership_grade' => 'クラブ会員サンダーピチャイ'
+        //     ),
+        //     array(
+        //         'club_id'          => '0001',
+        //         'membership_name'  => 'サンダーピチャイ',
+        //         'membership_grade' => 'クラブ会員サンダーピチャイ'
+        //     )
+        // );
+        // ClubMemberShip::updateClubMemberShip($clubMemberShips);
+    }
 }
