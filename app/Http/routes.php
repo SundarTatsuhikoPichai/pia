@@ -21,6 +21,9 @@ Route::get('/heatmap',           ['as' => 'heatmap',           'uses' => 'MainCo
 //inputclubdata
 Route::get('/inputclubdata',     ['as' => 'inputclubdata',     'uses' => 'InputClubDataController@index']);
 
+Route::get('/inputclubdata/clubList',  ['as' => 'clubList',    'uses' => 'InputClubDataController@clubList']);
+
+
 Route::post('/inputclubdata/create',     ['as' => 'inputclubdata',     'uses' => 'InputClubDataController@create']);
 
 // importcsv
