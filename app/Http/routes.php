@@ -16,15 +16,12 @@ Route::get('/',                  ['as' => 'dashboard',         'uses' => 'MainCo
 Route::get('/populationpyramid', ['as' => 'populationpyramid', 'uses' => 'PopulationPyramidController@index']);
 Route::post('/populationpyramid', ['as' => 'populationpyramid', 'uses' => 'PopulationPyramidController@post']);
 
-Route::get('/heatmap',           ['as' => 'heatmap',           'uses' => 'MainController@heatMap']);
+// heatmap
+Route::get('/heatmap',           ['as' => 'heatmap',           'uses' => 'HeatMapController@index']);
 
 //inputclubdata
 Route::get('/inputclubdata',     ['as' => 'inputclubdata',     'uses' => 'InputClubDataController@index']);
-
 Route::get('/inputclubdata/clubList',  ['as' => 'clubList',    'uses' => 'InputClubDataController@clubList']);
-
-
-Route::post('/inputclubdata/create',     ['as' => 'inputclubdata',     'uses' => 'InputClubDataController@create']);
 
 // importcsv
 Route::get('/importcsv',         ['as' => 'importcsvIndex',         'uses' => 'ImportCsvController@index']);
