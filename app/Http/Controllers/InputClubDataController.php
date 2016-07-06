@@ -15,6 +15,10 @@ class InputClubDataController extends Controller {
         return view('inputclubdata/index');
     }
 
+    public function inputRank() {
+        return view('inputclubdata/inputRank');
+    }
+
     public function create(Request $request) {
 
 
