@@ -18,7 +18,8 @@ class Clubs extends Model
             'club_code'     => 'required|unique:clubs|max:10',
             'club_name'     => 'required|max:100',
             'stadium_name'  => 'required|max:100',
-            'postal_code'   => 'required|min:8|max:8'
+            'postal_code'   => 'required|min:8|max:8',
+            'image_name'    => 'required'
         ];
         return Validator::make($input, $rules);
     }
