@@ -12,7 +12,9 @@
 */
 Route::get('/',                  ['as' => 'dashboard',         'uses' => 'MainController@index']);
 
-Route::get('/populationpyramid', ['as' => 'populationpyramid', 'uses' => 'MainController@populationPyramid']);
+// PopulationPyramid
+Route::get('/populationpyramid', ['as' => 'populationpyramid', 'uses' => 'PopulationPyramidController@index']);
+Route::post('/populationpyramid', ['as' => 'populationpyramid', 'uses' => 'PopulationPyramidController@post']);
 
 Route::get('/heatmap',           ['as' => 'heatmap',           'uses' => 'MainController@heatMap']);
 

@@ -65,4 +65,15 @@ class ClubsTest extends TestCase
         // var_dump($club);
         // Clubs::updateClubInfo($club);
     }
+
+    public function testSample() {
+        $club = new Clubs;
+        $club->club_name = 'さんぷる';
+        $club->image_name = '343433414515.jpg';
+        $club->club_code = 'AAA';
+        $club->stadium_name = 'aaaa';
+        $club->postal_code = '222-2222';
+        // var_dump($club);
+        var_dump($club->save());
+    }
 }
