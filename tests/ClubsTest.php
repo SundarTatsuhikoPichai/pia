@@ -58,4 +58,22 @@ class ClubsTest extends TestCase
         // ];
         // Clubs::registerClubInfo($club);
     }
+
+    public function testUpdateClubInfo() {
+        // $club = Clubs::find(4);
+        // $club->club_name = '鹿島アントラーズ';
+        // var_dump($club);
+        // Clubs::updateClubInfo($club);
+    }
+
+    public function testSample() {
+        $club = new Clubs;
+        $club->club_name = 'さんぷる';
+        $club->image_name = '343433414515.jpg';
+        $club->club_code = 'AAA';
+        $club->stadium_name = 'aaaa';
+        $club->postal_code = '222-2222';
+        // var_dump($club);
+        var_dump($club->save());
+    }
 }

@@ -15,6 +15,10 @@ class InputClubDataController extends Controller {
         return view('inputclubdata/index');
     }
 
+    public function clubList() {
+        return view('inputclubdata/clubList');
+    }
+
     public function create(Request $request) {
 
 

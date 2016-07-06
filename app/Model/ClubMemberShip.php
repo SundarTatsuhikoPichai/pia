@@ -21,7 +21,21 @@ class ClubMemberShip extends Model
         return Validator::make($input, $rules);
     }
 
+    /**
+     * regist clubMembership
+     *
+     * @return [bool]
+     */
     public static function registerClubMembership(array $clubMemberships) {
-        DB::table('club_membership')->insert($clubMemberships);
+
+        return DB::table('club_membership')->insert($clubMemberships);
+    }
+
+    public static function updateClubMembership(array $clubMemberships) {
+        // foreach ($clubMemberships as $clubMembership) {
+        //     if ($clubMembership->id) {
+        //         $clubMembership->save();
+        //     }
+        // }
     }
 }
