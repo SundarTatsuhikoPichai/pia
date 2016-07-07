@@ -8,12 +8,14 @@ class NameAggregation {
 
         $collection = collect($clubMembers);
         $chunk = $collection->chunk(5000);
+        $result = true;
 
         $blankAddressMembers = $chunk->map(function ($item){
             return $item->filter(function ($item, $key) {
                     return $item['address1'] === '';
             });
         });
+
         $uniqueMembers = $chunk->map(function ($item) {
             return $item->filter(function ($item, $key) {
                 return $item['address1'] !== '';
@@ -22,6 +24,22 @@ class NameAggregation {
                         $item['last_name_kana'].$item['address1'].$item['address2'];
             });
         });
-        return $uniqueMembers->merge($blankAddressMembers)->collapse()->all();
+
+        $mergedMembers = $uniqueMembers->merge($blankAddressMembers);
+
+        $blankGradeMembersCnt = $mergedMembers->map(function ($item) {
+            return $item->filter(function ($item, $key) {
+                return $item['membership_grade'] === '';
+            });
+        })->count();
+
+        if($blankGradeMembersCnt > 0) {
+            $result = false;
+        }
+
+        return [
+            'data'      => $mergedMembers->collapse()->all(),
+            'result'    => $result
+        ];
     }
 }

@@ -41,14 +41,21 @@ class ImportCsvController extends Controller
             $clubMembers = ClubMembers::readFromCSV($request->input('clubId'), $year, $csvFileName);
             // Aggregation by Name
             $uniqueMembers = NameAggregation::execute($clubMembers);
-            // Insert clubmembers
-            ClubMembers::registerClubMembers($uniqueMembers);
-            // Create message
-            $msg = '正常に保存されました。データ件数：' . count($clubMembers) . '件 / サマリ件数：' . count($uniqueMembers) . '件';
-            // Register filename
-            $registerFileName = new RegisteredCSV;
-            $registerFileName->file_name = $csvFileName;
-            $registerFileName->save();
+
+            // Validation success
+            if($uniqueMembers['result']) {
+                // Insert clubmembers
+                ClubMembers::registerClubMembers($uniqueMembers['data']);
+                // Create message
+                $msg = '正常に保存されました。データ件数：' . count($clubMembers) . '件 / サマリ件数：' . count($uniqueMembers['data']) . '件';
+                // Register filename
+                $registerFileName = new RegisteredCSV;
+                $registerFileName->file_name = $csvFileName;
+                $registerFileName->save();
+            } else {
+                // Validation failure
+                $msg = '名寄せに失敗しました。CSVデータまたはクラブ情報をご確認ください。';
+            }
         } else {
             // Create message
             $msg = 'ファイルが見つかりませんでした。';
