@@ -13,7 +13,7 @@ class Clubs extends Model
 
     public $timestamps = false;
 
-    public function valid($input) {
+    public static function valid($input) {
         $rules = [
             'club_code'     => 'required|unique:clubs|max:10',
             'club_name'     => 'required|max:100',
@@ -29,7 +29,7 @@ class Clubs extends Model
      *
      * @return [int] clubId
      */
-    public static function registerClubInfo($club) {
+    public static function registerClubInfo(array $club) {
 
         return DB::table('clubs')->insertGetId($club);
     }
