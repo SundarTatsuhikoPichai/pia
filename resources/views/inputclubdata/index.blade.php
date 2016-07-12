@@ -39,7 +39,7 @@
 
                 <div class="form-group">
                     <label for="homeStadiumPostalCode">ホームスタジアム郵便番号</label>
-                    <input type="number" class="form-control" id="homeStadiumPostalCode" name="postal_code" placeholder="ホームスタジアム郵便番号">
+                    <input type="text" class="form-control" id="homeStadiumPostalCode" name="postal_code" placeholder="ホームスタジアム郵便番号">
                     <p class="error">{{ $errors->first('postal_code')}}</p>
                 </div>
 
