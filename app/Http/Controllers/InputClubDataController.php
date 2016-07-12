@@ -17,7 +17,10 @@ class InputClubDataController extends Controller {
     }
 
     public function clubList() {
-        return view('inputclubdata/clubList');
+        $clubs = Clubs::getClubInfo();
+        //$clubs = json_encode($club);
+        var_dump($clubs);
+        return view('inputclubdata/clubList', ['clubs' => $clubs]);
     }
 
     public function create(Request $request) {
