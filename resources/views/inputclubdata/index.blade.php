@@ -20,8 +20,8 @@
             <div class="box">
                 <!-- select -->
                 <div class="form-group">
-                  <label for="clubName">Jリーグクラブ名</label>
-                  <input type="text" class="form-control" id="clubName" name="clubName" placeholder="Jリーグクラブ名">
+                  <label for="club_name">Jリーグクラブ名</label>
+                  <input type="text" class="form-control" id="club_name" name="club_name" placeholder="Jリーグクラブ名">
                 </div>
 
                 <div class="form-group">

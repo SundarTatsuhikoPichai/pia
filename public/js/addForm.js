@@ -1,21 +1,17 @@
 function addrankA()
 {
-     var cntInput = member_a.child;
-     var div_element = document.createElement("div");
-     div_element.innerHTML = '<br><input type="text" class="form-control" name="inputMemberRankA[]">';
-     document.getElementById('member_a').appendChild(div_element);
+     var div_element = $("#inputRankA").children(".form-group:first");
+     $('#inputRankA').append(div_element.clone(true));
 }
 
 function addrankB()
 {
-     var div_element = document.createElement("div");
-     div_element.innerHTML = '<br><input type="text" class="form-control" name="inputMemberRankB[]">';
-     document.getElementById('member_b').appendChild(div_element);
+     var div_element = $("#inputRankB").children(".form-group:first");
+     $('#inputRankB').append(div_element.clone(true));
 }
 
 function addrankC()
 {
-     var div_element = document.createElement("div");
-     div_element.innerHTML = '<br><input type="text" class="form-control" name="inputMemberRankC[]">';
-     document.getElementById('member_c').appendChild(div_element);
+     var div_element = $("#inputRankC").children(".form-group:first");
+     $('#inputRankC').append(div_element.clone(true));
 }
