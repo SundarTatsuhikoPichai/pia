@@ -40,7 +40,6 @@ class InputClubDataController extends Controller {
 
             //Insert clubdata
             if(!empty(Clubs::registerClubInfo(json_decode(json_encode($club), true)))){
-                print_r("オッケー");
                 $msg = "正常に保存されました。";
             } else {
                 //Delete uploadfile
@@ -48,14 +47,15 @@ class InputClubDataController extends Controller {
                 $msg = "登録に失敗しました。";
             }
 
+            // Return view
+            $view = view('inputclubdata/create')->
+                        with('msg', $msg);
+            return $view;
+
+
         } else {
-            $msg = 'データを取得できませんでした。';
+            return redirect('/inputclubdata')->withErrors($valid);
         }
-
-        // Return view
-        $view = view('')->with('msg', $msg);
-        return $view;
-
 
         //print_r($input);
 
