@@ -23,6 +23,17 @@ class InputClubDataController extends Controller {
         return view('inputclubdata/clubList', ['clubs' => $clubs]);
     }
 
+    public function updateClubData(Request $request) {
+        $id = $request->input('id');
+
+        $club = Clubs::find($id);
+
+        // Return view
+        $view = view('inputclubdata/updateClubData')
+                        ->with('club', $club);
+        return $view;
+    }
+
     public function create(Request $request) {
 
         $input = $request->all();

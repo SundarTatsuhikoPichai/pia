@@ -23,6 +23,8 @@ Route::get('/inputclubdata',     ['as' => 'inputclubdata',     'uses' => 'InputC
 
 Route::get('/inputclubdata/clubList',  ['as' => 'clubList',    'uses' => 'InputClubDataController@clubList']);
 
+Route::get('/inputclubdata/updateClubData', ['as' => 'updateClubData',  'uses' => 'InputClubDataController@updateClubData']);
+
 
 Route::post('/inputclubdata/create',     ['as' => 'inputclubdata',     'uses' => 'InputClubDataController@create']);
 
