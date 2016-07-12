@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('page-title')
-クラブデータ入力
+クラブ一覧
 @stop
 
 @section('addCss')
@@ -28,7 +28,7 @@
                     @foreach ($clubs as $clubdata)
                     <tr>
                       <td><img src="{{ $clubdata['image_name'] }}">{{ $clubdata['club_name'] }}</td>
-                      <td><a href="{{ URL::asset('/inputclubdata/edit?id='.$clubdata['id'] )}}" class="btn btn-primary">編集</a></td>
+                      <td><a href="{{ URL::asset('/inputclubdata/updateClubData?id='.$clubdata['id'] )}}" class="btn btn-primary">編集</a></td>
                     </tr>
                      @endforeach
                 @endif
