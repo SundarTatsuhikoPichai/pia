@@ -7,6 +7,7 @@
     <!-- Sidebar Menu -->
     <ul class="sidebar-menu">
       <!-- Optionally, you can add icons to the links -->
+      <li style="text-align:center; background-color: white;"><img src="{{ asset('img/J_logo.jpg') }}" style="max-width: 150px;"></li>
       <li><a href="{{ URL::asset('/') }}"><i class="fa fa-dashboard"></i><span>ダッシュボード</span></a></li>
       <li><a href="{{ URL::asset('/populationpyramid') }}"><i class="fa fa-align-left"></i><span>人口ピラミッド分析</span></a></li>
       <li><a href="{{ URL::asset('/heatmap') }}"><i class="fa fa-map-o"></i><span>地域別属性分析</span></a></li>
