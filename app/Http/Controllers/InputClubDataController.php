@@ -41,7 +41,7 @@ class InputClubDataController extends Controller {
 
             $imgFile = $input['image_name'];
             $timeFileName =  time().".jpg";
-            $imgFile->move(storage_path(). '/img', $timeFileName);
+            $imgFile->move(public_path(). '/appimg', $timeFileName);
 
             $club = new Clubs;
             $club->club_code    = $input['club_code'];

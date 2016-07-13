@@ -24,8 +24,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
   -->
   <link rel="stylesheet" href="{{asset('bower_components/admin-lte/dist/css/skins/skin-purple.min.css')}}">
 
-  <link rel="stylesheet" type="text/css" href="{{ asset('css/master.css') }}">
-
   @yield('addCss')
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
