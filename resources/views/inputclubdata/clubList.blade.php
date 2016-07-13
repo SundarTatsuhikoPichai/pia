@@ -28,7 +28,7 @@
                 @if(isset($clubs))
                     @foreach ($clubs as $clubdata)
                     <tr>
-                      <td><img src= "{{ asset('img/' . $clubdata->image_name  ) }}" width="50%"></td>
+                      <td><img src= "{{ asset('img/' . $clubdata->image_name  ) }}" style="max-height: 80px;"></td>
                       <td>{{ $clubdata->club_name }}</td>
                       <td><a href="{{ URL::asset('/inputclubdata/updateClubData?id='.$clubdata->id )}}" class="btn btn-primary">編集</a></td>
                     </tr>
