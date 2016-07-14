@@ -4,6 +4,8 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
+use App\Model\RegisteredCSV;
+
 class ExampleTest extends TestCase
 {
     /**
@@ -11,9 +13,10 @@ class ExampleTest extends TestCase
      *
      * @return void
      */
-    public function testBasicExample()
+    public function testRegisterCSVFile()
     {
-        // $this->visit('/')
-        //      ->see('Laravel 5');
+        $sample = new RegisteredCSV;
+        $sample->file_name = 'sample';
+        $this->assertTrue($sample->save());
     }
 }

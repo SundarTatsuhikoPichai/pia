@@ -4,6 +4,7 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 use Validator;
+use DB;
 
 class ClubMemberShip extends Model
 {
@@ -18,5 +19,23 @@ class ClubMemberShip extends Model
         ];
 
         return Validator::make($input, $rules);
+    }
+
+    /**
+     * regist clubMembership
+     *
+     * @return [bool]
+     */
+    public static function registerClubMembership(array $clubMemberships) {
+
+        return DB::table('club_membership')->insert($clubMemberships);
+    }
+
+    public static function updateClubMembership(array $clubMemberships) {
+        // foreach ($clubMemberships as $clubMembership) {
+        //     if ($clubMembership->id) {
+        //         $clubMembership->save();
+        //     }
+        // }
     }
 }

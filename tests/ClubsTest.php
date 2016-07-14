@@ -49,13 +49,31 @@ class ClubsTest extends TestCase
      * Insert test
      * @return [type] [description]
      */
-    // public function testRegisterDB() {
-    //     $club = [
-    //         'club_code'     => str_random(10),
-    //         'club_name'     => str_random(10),
-    //         'stadium_name'  => str_random(100),
-    //         'postal_code'   => mt_rand(10000000, 99999999)
-    //     ];
-    //     $this->assertTrue(Clubs::registerClubInfo($club));
-    // }
+    public function testRegisterDB() {
+        // $club = [
+        //     'club_code'     => 'AA',
+        //     'club_name'     => 'ジュビロ磐田',
+        //     'stadium_name'  => 'AAAAAAA',
+        //     'postal_code'   => mt_rand(10000000, 99999999)
+        // ];
+        // Clubs::registerClubInfo($club);
+    }
+
+    public function testUpdateClubInfo() {
+        // $club = Clubs::find(4);
+        // $club->club_name = '鹿島アントラーズ';
+        // var_dump($club);
+        // Clubs::updateClubInfo($club);
+    }
+
+    public function testSample() {
+        $club = new Clubs;
+        $club->club_name = 'さんぷる';
+        $club->image_name = '343433414515.jpg';
+        $club->club_code = 'AAA';
+        $club->stadium_name = 'aaaa';
+        $club->postal_code = '222-2222';
+        // var_dump($club);
+        var_dump($club->save());
+    }
 }

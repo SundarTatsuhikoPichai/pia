@@ -4,6 +4,7 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 use Validator;
+use DB;
 
 class Clubs extends Model
 {
@@ -12,29 +13,45 @@ class Clubs extends Model
 
     public $timestamps = false;
 
-    public function valid($input) {
+    public static function valid($input) {
         $rules = [
             'club_code'     => 'required|unique:clubs|max:10',
             'club_name'     => 'required|max:100',
             'stadium_name'  => 'required|max:100',
-            'postal_code'   => 'required|min:8|max:8'
+            'postal_code'   => 'required|min:8|max:8',
+            'image_name'    => 'required'
         ];
         return Validator::make($input, $rules);
     }
 
     /**
-     * [registerClubInfo description]
-     * @param  [Clubs] $club
-     * @return void
+     * register club info and return the id
+     *
+     * @return [int] clubId
      */
-    public static function registerClubInfo($club) {
+    public static function registerClubInfo(array $club) {
 
-        $clubs = new Clubs;
-        $clubs->club_code    = $club['club_code'];
-        $clubs->club_name    = $club['club_name'];
-        $clubs->stadium_name = $club['stadium_name'];
-        $clubs->postal_code  = $club['postal_code'];
-
-        return $clubs->save();
+        return DB::table('clubs')->insertGetId($club);
     }
+
+    /**
+     * update club information
+     *
+     * @return [bool]
+     */
+    public static function updateClubInfo($club) {
+
+        return $club->save();
+    }
+
+    /**
+     * get club information
+     *
+     * @return []
+     */
+     public static function getClubInfo(){
+
+         return DB::table('clubs')->get();
+     }
+
 }

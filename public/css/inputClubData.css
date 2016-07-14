@@ -1,0 +1,12 @@
+@charset "utf-8";
+.box {
+  padding: 50px 100px;
+}
+
+.box-footer {
+  text-align: center;
+}
+
+.error {
+  color: #FF0000;
+}

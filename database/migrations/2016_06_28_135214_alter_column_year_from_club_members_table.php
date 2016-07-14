@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ModifyClubMembersTable extends Migration
+class AlterColumnYearFromClubMembersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class ModifyClubMembersTable extends Migration
     public function up()
     {
         Schema::table('club_members', function ($table) {
-            $table->string('sex', 1)->nullable()->change();
+            $table->integer('year')->change();
         });
     }
 
@@ -25,7 +25,7 @@ class ModifyClubMembersTable extends Migration
     public function down()
     {
         Schema::table('club_members', function ($table) {
-            $table->string('sex', 1)->change();
+            $table->tinyInteger('year')->change();
         });
     }
 }
