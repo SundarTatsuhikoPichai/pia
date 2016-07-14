@@ -39,7 +39,7 @@ class ClubMembersTest extends TestCase
             'address4'           => str_random(50),
             'first_name_kana'    => str_random(50),
             'last_name_kana'     => str_random(50),
-            'membership_grade'   => 'A'
+            'club_membership_id' => 3333
         ];
         $validation = $clubMembers->valid($successInput);
         $this->assertTrue($validation->passes());
@@ -63,14 +63,13 @@ class ClubMembersTest extends TestCase
             'address4'           => str_random(50),
             'first_name_kana'    => str_random(50),
             'last_name_kana'     => str_random(50),
-            'membership_grade'   => 'A'
+            'club_membership_id' => 3333
         ];
         $validation = $clubMembers->valid($failureInput);
         $this->assertFalse($validation->passes());
     }
 
-    public function testReadFromCSV() {
-        // $clubMembers =  ClubMembers::readFromCSV(9, 2016, 'AN_2016_member_20160516090134.csv');
-        // ClubMembers::saveClubMembers($clubMembers);
-    }
+    // public function testReadFromCSV() {
+    //     ClubMembers::readFromCSV('JU', 2016, 'JU_2016_member_20160516090134.csv');
+    // }
 }

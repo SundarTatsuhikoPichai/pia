@@ -34,7 +34,7 @@ class ClubMembers extends Model
             'address4'           => 'max:50',
             'first_name_kana'    => 'max:50',
             'last_name_kana'     => 'max:50',
-            'membership_grade'   => 'required'
+            'club_membership_id' => 'required'
         ];
 
         return Validator::make($input, $rules);
@@ -76,22 +76,18 @@ class ClubMembers extends Model
                 'address4'           => $rows[8],
                 'first_name_kana'    => $rows[16],
                 'last_name_kana'     => $rows[15],
-                'membership_grade' => implode(DB::table('club_membership')
+                'club_membership_id' => DB::table('club_membership')
+                    ->select('membership_grade')
                     ->where('club_id', '=', $clubId)
                     ->where('membership_name', '=', $rows[13])
-                    ->pluck('membership_grade'))
+                    ->get()
             );
         });
 
         $lexer = new Lexer($config);
         $lexer->parse(storage_path(). '/csv/'. $fileName, $interpreter);
+        var_dump($clubMembers);
 
         return $clubMembers;
-    }
-
-    public static function registerClubMembers(array $clubMembers) {
-        foreach($clubMembers as $clubMember) {
-            DB::table('club_members')->insert($clubMember);
-        }
     }
 }
