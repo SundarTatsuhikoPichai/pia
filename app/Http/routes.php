@@ -25,8 +25,12 @@ Route::get('/inputclubdata/clubList',  ['as' => 'clubList',    'uses' => 'InputC
 
 Route::get('/inputclubdata/updateClubData', ['as' => 'updateClubData',  'uses' => 'InputClubDataController@updateClubData']);
 
+Route::post('/inputclubdata/update', ['as' => 'update',  'uses' => 'InputClubDataController@update']);
+
 
 Route::post('/inputclubdata/create',     ['as' => 'inputclubdata',     'uses' => 'InputClubDataController@create']);
+
+Route::post('/inputclubdata/createMemberShip',     ['as' => 'inputclubdata',     'uses' => 'InputClubDataController@createMemberShip']);
 
 // importcsv
 Route::get('/importcsv',         ['as' => 'importcsvIndex',         'uses' => 'ImportCsvController@index']);

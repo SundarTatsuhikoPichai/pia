@@ -50,18 +50,20 @@
             <div class="box">
                 <div id="inputRankA" class="form-group">
 
-                  <label for="memberRankA" class="col-md-12">SS会員</label>
+                  <label class="col-md-12">SS会員</label>
 
                   <div class="form-group row">
-                    <form  role="form" method="POST" action="{{ URL::asset('/inputclubdata/create') }}">
+                    <form  role="form" method="POST" action="{{ URL::asset('/inputclubdata/update') }}">
+                    {{ csrf_field() }}
                       <div id="member_a" class="col-md-8">
-                          <input type="text" class="col-md-12">
+                          <input type="text" class="col-md-12" name="member_a">
                       </div>
 
                       <div class="col-md-4">
-                        <input type="button" class="btn btn-primary" onclick="addrankA();" value="追加">
-                        <input type="button" class="btn btn-primary" value="更新" id="update">
-                        <input type="button" class="btn btn-primary" value="削除" id="delete">
+                        <input type="button" class="btn btn-primary" onclick="addrankA();" value="+">
+                        <input type="submit" class="btn btn-primary" value="保存">
+                        <input type="submit" class="btn btn-primary" value="更新">
+                        <input type="submit" class="btn btn-primary" value="削除">
                       </div>
                     </form>
                   </div>
@@ -70,39 +72,75 @@
 
                 <div id="inputRankB" class="form-group">
 
-                    <label for="memberRankB" class="col-md-12">有料会員</label>
+                    <label class="col-md-12">有料会員</label>
 
                     <div class="form-group row">
-                    <form  role="form" method="POST" action="{{ URL::asset('/inputclubdata/create') }}">
+                    <form  role="form" method="POST" action="{{ URL::asset('/inputclubdata/update') }}">
+                    {{ csrf_field() }}
                       <div id="member_a" class="col-md-8">
                           <input type="text" class="col-md-12">
                       </div>
 
                       <div class="col-md-4">
-                        <input type="button" class="btn btn-primary" onclick="addrankB();" value="追加">
-                        <input type="button" class="btn btn-primary" value="更新" id="update">
-                        <input type="button" class="btn btn-primary" value="削除" id="delete">
+                        <input type="button" class="btn btn-primary" onclick="addrankB();" value="+">
+                        <input type="submit" class="btn btn-primary" value="保存">
+                        <input type="submit" class="btn btn-primary" value="更新">
+                        <input type="submit" class="btn btn-primary" value="削除">
                       </div>
                     </form>
                   </div>
                 </div>
 
                 <div id="inputRankC" class="form-group">
-                    <label for="memberRankC" class="col-md-12">無料会員</label>
+                    <label class="col-md-12">無料会員</label>
+
+
                     <div class="form-group row">
-                    <form  role="form" method="POST" action="{{ URL::asset('/inputclubdata/create') }}">
+                      <form  role="form" method="POST" action="{{ URL::asset('/inputclubdata/update') }}">
+                      {{ csrf_field() }}
+                        <div id="member_a" class="col-md-8">
+                          <input type="text" class="col-md-12">
+                        </div>
+
+                        <div class="col-md-2">
+                          <input type="submit" class="btn btn-primary col-md-12" value="更新">
+                        </div>
+                      </form>
+
+
+                      <form role="form" method="POST" action="{{ URL::asset('/inputclubdata/delete') }}">
+                      <div class="col-md-2">
+                        <input type="submit" class="btn btn-primary col-md-12" value="削除">
+                      </div>
+                      </form>
+                    </div>
+
+
+
+
+
+
+
+                    <div class="form-group row">
+                    <form  role="form" method="POST" action="{{ URL::asset('/inputclubdata/createMemberShip') }}">
+                    {{ csrf_field() }}
                       <div id="member_a" class="col-md-8">
                           <input type="text" class="col-md-12">
                       </div>
 
                       <div class="col-md-4">
-                        <input type="button" class="btn btn-primary" onclick="addrankC();" value="追加">
-                        <input type="button" class="btn btn-primary" value="更新" id="update">
-                        <input type="button" class="btn btn-primary" value="削除" id="delete">
+                        <input type="button" class="btn btn-primary" onclick="addrankC();" value="+">
+                        <input type="submit" class="btn btn-primary" value="保存">
                       </div>
                     </form>
-                  </div>
-                </div>
+                    </div>
+
+
+
+
+
+
+              </div>
 
             </div>
     </div>
