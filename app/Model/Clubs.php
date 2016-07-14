@@ -43,4 +43,15 @@ class Clubs extends Model
 
         return $club->save();
     }
+
+    /**
+     * get club information
+     *
+     * @return []
+     */
+     public static function getClubInfo(){
+
+         return DB::table('clubs')->get();
+     }
+
 }

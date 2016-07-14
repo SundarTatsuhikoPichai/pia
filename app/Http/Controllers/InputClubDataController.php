@@ -17,7 +17,8 @@ class InputClubDataController extends Controller {
     }
 
     public function clubList() {
-        return view('inputclubdata/clubList');
+        $clubs = Clubs::getClubInfo();
+        return view('inputclubdata/clubList', ['clubs' => $clubs]);
     }
 
     public function updateClubData(Request $request) {
@@ -40,7 +41,7 @@ class InputClubDataController extends Controller {
 
             $imgFile = $input['image_name'];
             $timeFileName =  time().".jpg";
-            $imgFile->move(public_path(). '/img', $timeFileName);
+            $imgFile->move(public_path(). '/appimg', $timeFileName);
 
             $club = new Clubs;
             $club->club_code    = $input['club_code'];

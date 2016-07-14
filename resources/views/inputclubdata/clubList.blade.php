@@ -19,6 +19,7 @@
             <table id="example2" class="table table-bordered table-hover">
             <thead>
                 <tr>
+                  <th>ロゴ</th>
                   <th>クラブ名</th>
                   <th>編集</th>
                 </tr>
@@ -27,8 +28,9 @@
                 @if(isset($clubs))
                     @foreach ($clubs as $clubdata)
                     <tr>
-                      <td><img src="{{ $clubdata['image_name'] }}">{{ $clubdata['club_name'] }}</td>
-                      <td><a href="{{ URL::asset('/inputclubdata/updateClubData?id='.$clubdata['id'] )}}" class="btn btn-primary">編集</a></td>
+                      <td><img src= "{{ asset('appimg/' . $clubdata->image_name  ) }}" style="max-height: 80px;"></td>
+                      <td>{{ $clubdata->club_name }}</td>
+                      <td><a href="{{ URL::asset('/inputclubdata/updateClubData?id='.$clubdata->id )}}" class="btn btn-primary">編集</a></td>
                     </tr>
                      @endforeach
                 @endif
