@@ -32,25 +32,10 @@ class InputClubDataController extends Controller {
 
     public function create(Request $request) {
 
-
         $input = $request->all();
-        // $valid = Clubs::valid($input);
-
         print_r($input);
 
-        // if($valid->fails()) {
-        //     //メッセージ取り出してViewに渡す
-        //     //リダイレクト
-
-
-        // } else {
-        //     //データベースに保存
-
-        // }
     }
-<<<<<<< Updated upstream
-=======
-
 
     public function createMemberShip(Request $request) {
         $rank = $request->input('member_a');
@@ -73,46 +58,11 @@ class InputClubDataController extends Controller {
         $id = $request->input('id');
         $memberShipData = ClubMemberShip::find($id);
 
-        var_dump($id);
-        var_dump($request->input('member_a'));
-
-        // if(!$memberShipData->isEmpty()) {
-
-        //     //update(['membership_name' => ]);
-
-
-
-        // }
-
-
-
-
-
-            //Insert clubdata
-            // if(){
-            //     $msg = "正常に更新されました。";
-            // } else {
-            //     $msg = "更新に失敗しました。";
-            // }
-
-            // Return view
-            // $view = view('inputclubdata/updateClubData')->
-            //             with('msg', $msg);
-            // return $view;
-
-        // } else {
-        //     return redirect('/inputclubdata/updateClubData')->withErrors($valid);
-        // }
     }
-
-
-
-
 
     //clubs data acquisition
     public function acquisition(){
         $clubdatas = Clubs::all();
         return view('inputclubdata/clubList')->with('clubs', $clubdatas);
     }
->>>>>>> Stashed changes
 }
