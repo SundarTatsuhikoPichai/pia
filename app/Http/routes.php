@@ -12,25 +12,13 @@
 */
 Route::get('/',                  ['as' => 'dashboard',         'uses' => 'MainController@index']);
 
-// PopulationPyramid
-Route::get('/populationpyramid', ['as' => 'populationpyramid', 'uses' => 'PopulationPyramidController@index']);
-Route::post('/populationpyramid', ['as' => 'populationpyramid', 'uses' => 'PopulationPyramidController@post']);
+Route::get('/populationpyramid', ['as' => 'populationpyramid', 'uses' => 'MainController@populationPyramid']);
 
 Route::get('/heatmap',           ['as' => 'heatmap',           'uses' => 'MainController@heatMap']);
 
-//inputclubdata
-Route::get('/inputclubdata',     ['as' => 'inputclubdata',     'uses' => 'InputClubDataController@index']);
+Route::get('/inputclubdata',     ['as' => 'inputclubdata',     'uses' => 'MainController@inputClubData']);
 
-Route::get('/inputclubdata/clubList',  ['as' => 'clubList',    'uses' => 'InputClubDataController@clubList']);
-
-Route::get('/inputclubdata/updateClubData', ['as' => 'updateClubData',  'uses' => 'InputClubDataController@updateClubData']);
-
-
-Route::post('/inputclubdata/create',     ['as' => 'inputclubdata',     'uses' => 'InputClubDataController@create']);
-
-// importcsv
-Route::get('/importcsv',         ['as' => 'importcsvIndex',         'uses' => 'ImportCsvController@index']);
-Route::post('/importcsv/create',         ['as' => 'importcsvCreate',         'uses' => 'ImportCsvController@create']);
+Route::get('/importcsv',         ['as' => 'importcsv',         'uses' => 'MainController@importCsv']);
 
 
 // call Admin_template

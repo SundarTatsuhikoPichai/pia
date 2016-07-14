@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ModifyClubMembersTable4 extends Migration
+class ModifyClubMembersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,9 @@ class ModifyClubMembersTable4 extends Migration
     public function up()
     {
         Schema::table('club_members', function ($table) {
-            $table->string('sex', 1)->nullable()->change();
+            $table->string('address2', 50)->nullable()->change();
+            $table->string('address3', 50)->nullable()->change();
+            $table->string('address4', 50)->nullable()->change();
         });
     }
 
@@ -25,7 +27,9 @@ class ModifyClubMembersTable4 extends Migration
     public function down()
     {
         Schema::table('club_members', function ($table) {
-            $table->string('sex', 1)->change();
+            $table->string('address2', 50)->change();
+            $table->string('address3', 50)->change();
+            $table->string('address4', 50)->change();
         });
     }
 }

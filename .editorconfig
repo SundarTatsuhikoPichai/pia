@@ -11,9 +11,6 @@ insert_final_newline = true
 [*.php]
 indent_size = 4
 
-[*.blade.php]
-indent_size = 2
-
 [*.{xml,rng}]
 indent_size = 4
 
