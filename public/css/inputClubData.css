@@ -1,6 +1,6 @@
 @charset "utf-8";
 .box {
-  padding: 50px 100px;
+
 }
 
 .box-footer {
@@ -9,4 +9,8 @@
 
 .error {
   color: #FF0000;
+}
+
+.cont{
+  padding: 50px 100px;
 }

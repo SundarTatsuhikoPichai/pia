@@ -71,17 +71,30 @@ class InputClubDataController extends Controller {
 
         //print_r($input);
 
-        // if($valid->fails()) {
-        //     //メッセージ取り出してViewに渡す
-        //     //リダイレクト
-
-
-        // } else {
-        //     //データベースに保存
-
-        // }
     }
 
+    public function createMemberShip(Request $request) {
+        $rank = $request->input('member_a');
+        $valid = ClubMemberShip::valid($rank);
+
+        if($valid->fails()) {
+            $clubMemberShip = new ClubMemberShip;
+            $clubMemberShip->membership_name = $input['membership_name'];
+        }
+
+        if(!empty(ClubMemberShip::registerClubMembership(json_decode(json_encode($clubMemberShip), true)))){
+                $msg = "正常に保存されました。";
+            } else {
+                $msg = "登録に失敗しました。";
+            }
+    }
+
+    public function update(Request $request) {
+
+        $id = $request->input('id');
+        $memberShipData = ClubMemberShip::find($id);
+
+    }
 
     //clubs data acquisition
     public function acquisition(){
