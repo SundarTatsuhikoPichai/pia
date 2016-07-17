@@ -20,27 +20,49 @@ html, body {
 
 @section('content')
 <div class="row">
-    <div class="col-md-6 col-md-offset-1">
+    <div class="col-md-7 col-md-offset-1">
         <div class="box box-primary">
             <div class="box-header">SearchForm</div>
-            <form action="">
+              {!! Form::open(['url' => 'heatmap']) !!}
                 <div class="box-body">
+                  <div class="form-group col-md-6">
+                    {!! Form::label('年度') !!}
+                    <select class="form-control" name="year">
+                      @foreach($years as $year)
+                      <option value="{{ $year }}" {{ Session::has('year') && session('year') == $year ? 'selected' : ''}}>{{ $year }}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                  <div class="form-group col-md-6">
+                    {!! Form::label('チーム名') !!}
+                    <select class="form-control" name="club_id">
+                      @foreach($clubs as $id => $club_name)
+                      <option value="{{ $id }}" {{ Session::has('club_id') && session('club_id') == $id ? 'selected' : ''}}>{{{ $club_name }}}</option>
+                      @endforeach
+                    </select>
+                  </div>
                 </div>
                 <div class="box-footer">
                     <div class="form-group">
-                        <button type="submit" class="btn btn-default pull-left">クリア</button>
-                        <button type="submit" class="btn btn-primary pull-right">この条件で絞り込む</button>
+                        <a href="#" class="btn btn-default pull-left">クリア</a>
+                        {!! Form::submit('この条件で絞り込む', ['class' => 'btn btn-primary pull-right']) !!}
                     </div>
                 </div>
-            </form>
+              {!! Form::close() !!}
         </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
         <div class="box box-solid">
             <div class="box-header">Geaph</div>
             <div class="box-body text-center">
-                <div class="sparkline" data-type="pie" data-offset="90" data-width="100px" data-height="100px">
-                    <canvas width="100" height="100" style="display: inline-block; width: 100px; height: 100px; vertical-align: top;"></canvas>
+                <div class="col-md-12">
+                  <i class="glyphicon glyphicon-stop pull-left" style="color: #6add31; background: #6add31;"></i><span>~ 3</span>
+                </div>
+                <div class="col-md-12">
+                  <i class="glyphicon glyphicon-stop pull-left" style="color: #f5f502; background: #f5f502;"></i><span>~ 9</span>
+                </div>
+                <div class="col-md-12">
+                  <i class="glyphicon glyphicon-stop pull-left" style="color: #ee0101; background: #ee0101;"></i><span>10 ~</span>
                 </div>
             </div>
             <div class="box-footer"></div>
@@ -61,13 +83,35 @@ html, body {
 
 @section('addJs')
 <script type="text/javascript">
-var map;
-function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: -34.397, lng: 150.644},
-    zoom: 8
-  });
+function callback() {
+    /* Data points defined as a mixture of WeightedLocation and LatLng objects */
+    var heatMapData = [
+      @if(isset($mapedLatlngs))
+        @foreach($mapedLatlngs as $latlng)
+          {location: new google.maps.LatLng(
+            {{ $latlng['lng'] }}, {{ $latlng['lat'] }}), weight: {{ $latlng['count'] < 5 ? 1 : $latlng['count'] < 10 ? 2 : 3 }} },
+        @endforeach
+      @endif
+    ];
+
+    @if(isset($homeStadiumLatlng))
+    var homeStadium =  new google.maps.LatLng(
+      {{ $homeStadiumLatlng['lng'] }}, {{ $homeStadiumLatlng['lat'] }});
+    @else
+    var homeStadium =  new google.maps.LatLng(35.692951, 139.698414);
+    @endif
+
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: homeStadium,
+      zoom: 13,
+    });
+
+    var heatmap = new google.maps.visualization.HeatmapLayer({
+      data: heatMapData
+    });
+    heatmap.set('radius', 15);
+    heatmap.setMap(map);
 }
 </script>
-<script src="{{ 'https://maps.googleapis.com/maps/api/js?key='. env('GOOGLE_API_KEY') .'&callback=initMap' }}" async defer></script>
+<script src="{{ 'https://maps.googleapis.com/maps/api/js?key='. env('GOOGLE_API_KEY') .'&libraries=visualization&sensor=true_or_false&callback=callback' }}" async defer></script>
 @stop

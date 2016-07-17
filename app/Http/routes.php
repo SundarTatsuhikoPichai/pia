@@ -18,6 +18,7 @@ Route::post('/populationpyramid', ['as' => 'populationpyramid', 'uses' => 'Popul
 
 // heatmap
 Route::get('/heatmap',           ['as' => 'heatmap',           'uses' => 'HeatMapController@index']);
+Route::post('/heatmap',          ['as' => 'heatmap',           'uses' => 'HeatMapController@index']);
 
 //inputclubdata
 Route::get('/inputclubdata',     ['as' => 'inputclubdata',     'uses' => 'InputClubDataController@index']);
