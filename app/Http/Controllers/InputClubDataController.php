@@ -21,14 +21,45 @@ class InputClubDataController extends Controller {
         return view('inputclubdata/clubList', ['clubs' => $clubs]);
     }
 
-    public function updateClubData(Request $request) {
+    public function edit(Request $request) {
         $id = $request->input('id');
-
         $club = Clubs::find($id);
+        $clubMembership = ClubMembership::where('club_id', $id)->get();
+
+        $clubMembershipA = $this->filterMemberShip($clubMembership, 'SS会員');
+        $clubMembershipB = $this->filterMemberShip($clubMembership, '有料会員');
+        $clubMembershipC = $this->filterMemberShip($clubMembership, '無料会員');
 
         // Return view
-        $view = view('inputclubdata/updateClubData')
-                        ->with('club', $club);
+        $view = view('inputclubdata/edit')
+                    ->with('club', $club)
+                    ->with('clubMembershipA', $clubMembershipA)
+                    ->with('clubMembershipB', $clubMembershipB)
+                    ->with('clubMembershipC', $clubMembershipC);
+        return $view;
+    }
+
+    private function filterMemberShip($clubMembership, $grade) {
+        return $clubMembership->filter(function($item) use($grade) {
+            return $item['membership_grade'] === $grade;
+        });
+    }
+
+    public function update(Request $request) {
+        $id = $request->input('id');
+        Clubs::find($id)->update($request->all());
+        // Return view
+        $view = view('inputclubdata/create')
+                    ->with('msg', 'クラブ情報が更新されました');
+        return $view;
+    }
+
+    public function delete(Request $request) {
+        $id = $request->input('id');
+        Clubs::find($id)->delete();
+        // Return view
+        $view = view('inputclubdata/create')
+                    ->with('msg', 'クラブ情報が削除されました');
         return $view;
     }
 
@@ -69,32 +100,8 @@ class InputClubDataController extends Controller {
             return redirect('/inputclubdata')->withErrors($valid);
         }
 
-        //print_r($input);
-
     }
 
-    public function createMemberShip(Request $request) {
-        $rank = $request->input('member_a');
-        $valid = ClubMemberShip::valid($rank);
-
-        if($valid->fails()) {
-            $clubMemberShip = new ClubMemberShip;
-            $clubMemberShip->membership_name = $input['membership_name'];
-        }
-
-        if(!empty(ClubMemberShip::registerClubMembership(json_decode(json_encode($clubMemberShip), true)))){
-                $msg = "正常に保存されました。";
-            } else {
-                $msg = "登録に失敗しました。";
-            }
-    }
-
-    public function update(Request $request) {
-
-        $id = $request->input('id');
-        $memberShipData = ClubMemberShip::find($id);
-
-    }
 
     //clubs data acquisition
     public function acquisition(){
