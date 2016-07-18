@@ -10,8 +10,9 @@ class ClubMemberShip extends Model
 {
     protected $table = 'club_membership';
     protected $guarded = ['id'];
+    public $timestamps = false;
 
-    public function valid($input){
+    public static function valid($input){
         $rules = [
             'club_id'          => 'required',
             'membership_name'  => 'required|max:50',
