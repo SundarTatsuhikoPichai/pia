@@ -94,4 +94,14 @@ class ClubMembers extends Model
             DB::table('club_members')->insert($clubMember);
         }
     }
+
+    public static function makePopulationPyramid($clubName, $year, $grade) {
+        $id = Clubs::where('club_name', $clubName)->pluck('id');
+        $members = ClubMembers::where('club_id', $id)
+                                    ->where('year', $year)
+                                    ->where('membership_grade', $grade)
+                                    ->get();
+
+        return PopulationPyramid::ageMaping($members);
+    }
 }

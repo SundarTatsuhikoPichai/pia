@@ -20,6 +20,7 @@ class Clubs extends Model
             'stadium_name'  => 'required|max:100',
             'postal_code'   => 'required|min:8|max:8'
         ];
+
         return Validator::make($input, $rules);
     }
 
