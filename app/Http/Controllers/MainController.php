@@ -15,9 +15,4 @@ class MainController extends Controller
     public function populationPyramid() {
         return view('populationpyramid/index');
     }
-
-    public function heatMap() {
-        return view('heatmap/index');
-    }
-
 }

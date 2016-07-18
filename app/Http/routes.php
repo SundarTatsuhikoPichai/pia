@@ -16,15 +16,17 @@ Route::get('/',                  ['as' => 'dashboard',         'uses' => 'MainCo
 Route::get('/populationpyramid', ['as' => 'populationpyramid', 'uses' => 'PopulationPyramidController@index']);
 Route::post('/populationpyramid', ['as' => 'populationpyramid', 'uses' => 'PopulationPyramidController@clubMembers']);
 
-Route::get('/heatmap',           ['as' => 'heatmap',           'uses' => 'MainController@heatMap']);
+// heatmap
+Route::get('/heatmap',           ['as' => 'heatmap',           'uses' => 'HeatMapController@index']);
+Route::post('/heatmap',          ['as' => 'heatmap',           'uses' => 'HeatMapController@index']);
 
 //inputclubdata
 Route::get('/inputclubdata',     ['as' => 'inputclubdata',     'uses' => 'InputClubDataController@index']);
-
 Route::get('/inputclubdata/clubList',  ['as' => 'clubList',    'uses' => 'InputClubDataController@clubList']);
-
-
+Route::get('/inputclubdata/updateClubData', ['as' => 'updateClubData',  'uses' => 'InputClubDataController@updateClubData']);
+Route::post('/inputclubdata/update', ['as' => 'update',  'uses' => 'InputClubDataController@update']);
 Route::post('/inputclubdata/create',     ['as' => 'inputclubdata',     'uses' => 'InputClubDataController@create']);
+Route::post('/inputclubdata/createMemberShip',     ['as' => 'inputclubdata',     'uses' => 'InputClubDataController@createMemberShip']);
 
 // importcsv
 Route::get('/importcsv',         ['as' => 'importcsvIndex',         'uses' => 'ImportCsvController@index']);
