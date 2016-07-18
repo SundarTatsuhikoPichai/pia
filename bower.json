@@ -1,6 +1,7 @@
 {
   "name": "Pia",
   "dependencies": {
-    "admin-lte": "*"
+    "admin-lte": "*",
+    "monmonmon/jquery.narrows": "*"
   }
 }
