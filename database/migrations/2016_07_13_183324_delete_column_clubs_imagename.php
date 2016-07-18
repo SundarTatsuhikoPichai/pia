@@ -13,7 +13,7 @@ class DeleteColumnClubsImagename extends Migration
     public function up()
     {
         Schema::table('clubs', function (Blueprint $table) {
-            $table->string('image_name', 100)->nullable();
+            $table->string('image_name', 100)->nullable()->change();
         });
     }
 
@@ -25,7 +25,7 @@ class DeleteColumnClubsImagename extends Migration
     public function down()
     {
         Schema::table('clubs', function (Blueprint $table) {
-            $table->string('image_name', 100);
+            $table->string('image_name', 100)->change();
         });
     }
 }
