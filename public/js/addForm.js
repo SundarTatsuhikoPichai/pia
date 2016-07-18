@@ -1,17 +1,13 @@
-function addrankA()
-{
-     var div_element = $("#inputRankA").children(".form-group:last");
-     $('#inputRankA').append(div_element.clone(true));
-}
+function addInputField(formId) {
 
-function addrankB()
-{
-     var div_element = $("#inputRankB").children(".form-group:last");
-     $('#inputRankB').append(div_element.clone(true));
-}
+  var formGroup = $(formId);
+  var childInput = formGroup.children(".form-group:last");
+  var childInputCount = formGroup.children().length;
+  var inputClone = childInput.clone(true);
 
-function addrankC()
-{
-     var div_element = $("#inputRankC").children(".form-group:last");
-     $('#inputRankC').append(div_element.clone(true));
+  inputClone.find(".input-js").attr('name',
+    formGroup.attr('id') + "[" + (childInputCount - 1) + "]");
+  inputClone.find(".input-js").val('');
+
+  formGroup.append(inputClone);
 }
