@@ -120,9 +120,9 @@
           <label>会員ランク選択</label>
           <select name="member-grade" class="form-control" id="member-grade">
             <option value="">-- select --</option>
-            <option value="A">シーズンパス会員</option>
-            <option value="B">有料会員</option>
-            <option value="C">無料会員</option>
+            <option value="SS会員">SS会員</option>
+            <option value="有料会員">有料会員</option>
+            <option value="無料会員">無料会員</option>
           </select>
         </div>
       </div>
