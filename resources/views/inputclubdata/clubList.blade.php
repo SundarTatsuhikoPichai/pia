@@ -34,7 +34,7 @@
                       <td>{{ $clubdata->club_name }}</td>
                       <td>{{ $clubdata->stadium_name }}</td>
                       <td>{{ $clubdata->postal_code }}</td>
-                      <td><a href="{{ URL::asset('/inputclubdata/updateClubData?id='.$clubdata->id )}}" class="btn btn-primary">編集</a></td>
+                      <td><a href="{{ URL::asset('/inputclubdata/edit?id='.$clubdata->id )}}" class="btn btn-primary">編集</a></td>
                     </tr>
                      @endforeach
                 @endif
