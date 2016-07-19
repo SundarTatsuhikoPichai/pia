@@ -16,7 +16,7 @@ class HeatMapController extends Controller
     public function index(Request $request) {
 
         $years = $this->years();
-        $clubs = $this->clubs();
+        $clubs = Clubs::all();
         $view = view('heatmap/index')->with('years', $years)->with('clubs', $clubs);
 
         if($request->isMethod('post')) {
@@ -43,11 +43,6 @@ class HeatMapController extends Controller
         }
 
         return $view;
-    }
-
-    private function clubs() {
-        $clubsCollection = Clubs::all();
-        return array_column($clubsCollection->all(), 'club_name', 'id');
     }
 
     private function years() {

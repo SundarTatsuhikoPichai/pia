@@ -36,8 +36,8 @@ html, body {
                   <div class="form-group col-md-6">
                     {!! Form::label('チーム名') !!}
                     <select class="form-control" name="club_id">
-                      @foreach($clubs as $id => $club_name)
-                      <option value="{{ $id }}" {{ Session::has('club_id') && session('club_id') == $id ? 'selected' : ''}}>{{{ $club_name }}}</option>
+                      @foreach($clubs as $club)
+                      <option value="{{ $club['id'] }}" {{ Session::has('club_id') && session('club_id') == $club['id'] ? 'selected' : ''}}>{{{ $club['club_name'] }}}</option>
                       @endforeach
                     </select>
                   </div>
