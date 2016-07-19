@@ -13,6 +13,7 @@ class PopulationPyramidController extends Controller
 {
     public function index() {
         $registeredCSVs = RegisteredCSV::all();
+        $clubs = [];
         foreach ($registeredCSVs as $registeredCSV) {
             $clubs[] = array(
                 'id'        => implode(DB::table('clubs')

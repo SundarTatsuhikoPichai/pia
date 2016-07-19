@@ -66,7 +66,6 @@ desired effect
   <section class="content-header">
     <h1>
       @yield('page-title')
-      <small>Optional description</small>
     </h1>
   </section>
 
